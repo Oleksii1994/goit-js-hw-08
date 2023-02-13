@@ -21,5 +21,5 @@ function getterDataLocalStorage() {
     return dataFromLocalStorage;
   }
 }
-player.setCurrentTime(getterDataLocalStorage());
+player.setCurrentTime(getterDataLocalStorage() || 0);
 player.on('timeupdate', throttle(onPlay, 1000));
