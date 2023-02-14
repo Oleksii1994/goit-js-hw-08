@@ -13,30 +13,26 @@ inputEl.addEventListener('input', throttle(onInput, 500));
 textareaEl.addEventListener('input', throttle(onInput, 500));
 
 populateFormInput();
-populateFormTextarea();
 
 function onFormSubmit(e) {
   e.preventDefault();
   e.currentTarget.reset();
   localStorage.removeItem(STORAGE_KEY);
+  console.log(formData);
 }
 
 function onInput(e) {
-  const message = e.target.value.trim();
-
-  formData[e.target.name] = message;
+  formData.email = inputEl.value.trim();
+  formData.message = textareaEl.value.trim();
 
   return localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 }
 
 function populateFormInput() {
   if (parcedData) {
-    inputEl.value = parcedData.email || '';
-  }
-}
-
-function populateFormTextarea() {
-  if (parcedData) {
-    textareaEl.value = parcedData.message || '';
+    return (
+      (inputEl.value = parcedData.email || ''),
+      (textareaEl.value = parcedData.message || '')
+    );
   }
 }
