@@ -15,8 +15,8 @@ populateFormInput();
 
 function onFormSubmit(e) {
   e.preventDefault();
+  console.log(populateFormInput());
 
-  console.log(formData);
   e.currentTarget.reset();
   localStorage.removeItem(STORAGE_KEY);
 }
@@ -31,9 +31,8 @@ function onInput(e) {
 function populateFormInput() {
   const parsedData = JSON.parse(localStorage.getItem(STORAGE_KEY));
   if (parsedData) {
-    return (
-      (inputEl.value = parsedData.email || ''),
-      (textareaEl.value = parsedData.message || '')
-    );
+    (inputEl.value = parsedData.email || ''),
+      (textareaEl.value = parsedData.message || '');
   }
+  return parsedData;
 }
