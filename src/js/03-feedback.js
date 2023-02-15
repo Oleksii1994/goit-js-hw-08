@@ -15,6 +15,9 @@ populateFormInput();
 
 function onFormSubmit(e) {
   e.preventDefault();
+  if (textareaEl.value === '' && (inputEl.value === '' || inputEl.value)) {
+    return;
+  }
   console.log(populateFormInput());
 
   e.currentTarget.reset();
