@@ -15,7 +15,7 @@ populateFormInput();
 
 function onFormSubmit(e) {
   e.preventDefault();
-  if (textareaEl.value === '' && (inputEl.value === '' || inputEl.value)) {
+  if (textareaEl.value === '' || inputEl.value === '') {
     return;
   }
   console.log(populateFormInput());
