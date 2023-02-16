@@ -4,12 +4,11 @@ const STORAGE_KEY = 'feedback-form-state';
 const formData = {};
 
 const formEl = document.querySelector('.feedback-form');
-const textareaEl = document.querySelector('textarea');
 const inputEl = document.querySelector('input');
+const textareaEl = document.querySelector('textarea');
 
 formEl.addEventListener('submit', onFormSubmit);
-inputEl.addEventListener('input', throttle(onInput, 500));
-textareaEl.addEventListener('input', throttle(onInput, 500));
+formEl.addEventListener('input', throttle(onInput, 500));
 
 populateFormInput();
 
@@ -19,7 +18,6 @@ function onFormSubmit(e) {
     return;
   }
   console.log(populateFormInput());
-
   e.currentTarget.reset();
   localStorage.removeItem(STORAGE_KEY);
 }

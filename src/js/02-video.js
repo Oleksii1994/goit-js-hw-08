@@ -6,20 +6,15 @@ const player = new Player(iframe);
 
 const onPlay = function (data) {
   localStorage.setItem('videoplayer-current-time', data.seconds);
-
-  const savedData = localStorage.getItem('videoplayer-current-time');
-  const parsedData = JSON.parse(savedData);
-  return parsedData;
 };
 
 function getterDataLocalStorage() {
-  const dataFromLocalStorage = JSON.parse(
-    localStorage.getItem('videoplayer-current-time')
-  );
+  const dataFromLocalStorage = localStorage.getItem('videoplayer-current-time');
 
   if (dataFromLocalStorage) {
     return dataFromLocalStorage;
   }
+  return 0;
 }
-player.setCurrentTime(getterDataLocalStorage() || 0);
+player.setCurrentTime(getterDataLocalStorage());
 player.on('timeupdate', throttle(onPlay, 1000));
